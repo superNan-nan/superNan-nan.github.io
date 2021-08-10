@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="SpringBoot自动装配原理, 王者的世界">
+    <meta name="keywords" content="SpringBoot自动装配原理, 码农的世界">
     <meta name="description" content="一切源于爱好">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -29,7 +29,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="My blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="My blog" type="application/atom+xml">
 </head>
 
 
@@ -126,6 +128,31 @@
       
       <span>友情链接</span>
     </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-list" style="zoom: 0.6;"></i>
+      
+      <span>Medias</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/musics">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>Musics</span>
+        </a>
+      </li>
+      
+    </ul>
     
   </li>
   
@@ -229,6 +256,31 @@
 			
 			友情链接
 		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-list"></i>
+			
+			Medias
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/musics " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>Musics</span>
+                  </a>
+                </li>
+              
+            </ul>
           
         </li>
         
@@ -464,6 +516,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -473,10 +528,50 @@
 <span id="more"></span>
 
 <h1 id="自动配置"><a href="#自动配置" class="headerlink" title="自动配置"></a>自动配置</h1><h2 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h2><p>spring-boot-dependencies：核心依赖在父工程中！<br>我们在写或者引入一些SpringBoot依赖的时候，不需要指定版本，就是因为有这些版本的仓库</p>
-<h2 id="启动器"><a href="#启动器" class="headerlink" title="启动器"></a>启动器</h2><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="启动器"><a href="#启动器" class="headerlink" title="启动器"></a>启动器</h2><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>启动器：简单的来说就是SpringBoot的启动场景；<br>比如spring-boot-starter-web，他就会帮我们自动导入web环境所有的依赖！<br>springboot会将所有的工程场景，都封装成一个个的启动器，我们需要使用寿命功能，就只需要找到对应的启动器就可以了。<br>下面是spring官网的启动器的网址：<br><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-boot/docs/2.4.4/reference/html/using-spring-boot.html#using-boot-starter">https://docs.spring.io/spring-boot/docs/2.4.4/reference/html/using-spring-boot.html#using-boot-starter</a></p>
-<h2 id="主程序"><a href="#主程序" class="headerlink" title="主程序"></a>主程序</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//将SpringBoot应用启动</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(DemoApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootConfiguration</span>   <span class="comment">//spting的配置</span></span><br><span class="line">	<span class="meta">@Configuration</span>  <span class="comment">//spring配置类</span></span><br><span class="line">		<span class="meta">@Component</span>  <span class="comment">//说明也是spring的一个组件</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span>   <span class="comment">//自动导入包</span></span><br><span class="line">	<span class="meta">@AutoConfigurationPackage</span>   <span class="comment">//自动配置包</span></span><br><span class="line">		<span class="meta">@AutoConfigurationPackage</span>   <span class="comment">//  自动配置包注册</span></span><br><span class="line">	<span class="meta">@Import(&#123;AutoConfigurationImportSelector.class&#125;)</span>  <span class="comment">//   自动导入选择器</span></span><br><span class="line">		AutoConfigurationImportSelector：自动导入选择器</span><br><span class="line">			getAutoConfigurationEntry()获得自动配置的实体</span><br><span class="line">			getCandidateConfigurations()获取候选的配置</span><br><span class="line">				<span class="keyword">protected</span> Class&lt;?&gt; getSpringFactoriesLoaderFactoryClass() &#123;</span><br><span class="line">				<span class="keyword">return</span> EnableAutoConfiguration.class;</span><br><span class="line">				&#125;标注了EnableAutoConfiguration注解的类</span><br><span class="line">				</span><br><span class="line">				<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;String&gt; <span class="title">loadFactoryNames</span><span class="params">(Class&lt;?&gt; factoryType, <span class="meta">@Nullable</span> ClassLoader classLoader)</span> </span>&#123;</span><br><span class="line">				ClassLoader classLoaderToUse = classLoader;</span><br><span class="line">				<span class="keyword">if</span> (classLoader == <span class="keyword">null</span>) &#123;</span><br><span class="line">				classLoaderToUse = SpringFactoriesLoader.class.getClassLoader();</span><br><span class="line">				&#125;</span><br><span class="line">				String factoryTypeName = factoryType.getName();</span><br><span class="line">				<span class="keyword">return</span> (List)loadSpringFactories(classLoaderToUse).getOrDefault(factoryTypeName, Collections.emptyList());</span><br><span class="line">				&#125;获取所有的加载配置</span><br><span class="line"></span><br><span class="line">				loadSpringFactories</span><br><span class="line">					classLoader.getResources(<span class="string">&quot;META-INF/spring.factories&quot;</span>);获取资源</span><br><span class="line">						spring-boot-autoconfigure-<span class="number">2.2</span><span class="number">.0</span>.RELEASE.jar</span><br><span class="line">							META-INF</span><br><span class="line">								spring.factories：所有的自动配置都在这里</span><br><span class="line">								这么多自动配置类为什么有的没有生效，需要导入对应的start才能生效</span><br><span class="line">								核心注解：<span class="meta">@ConditionalOnXXX</span>如果里面的条件都满足，才会生效</span><br></pre></td></tr></table></figure>
+<h2 id="主程序"><a href="#主程序" class="headerlink" title="主程序"></a>主程序</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DemoApplication</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">//将SpringBoot应用启动</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">DemoApplication</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@SpringBootConfiguration</span>   <span class="token comment">//spting的配置</span>
+	<span class="token annotation punctuation">@Configuration</span>  <span class="token comment">//spring配置类</span>
+		<span class="token annotation punctuation">@Component</span>  <span class="token comment">//说明也是spring的一个组件</span>
+<span class="token annotation punctuation">@EnableAutoConfiguration</span>   <span class="token comment">//自动导入包</span>
+	<span class="token annotation punctuation">@AutoConfigurationPackage</span>   <span class="token comment">//自动配置包</span>
+		<span class="token annotation punctuation">@AutoConfigurationPackage</span>   <span class="token comment">//  自动配置包注册</span>
+	<span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token class-name">AutoConfigurationImportSelector</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">}</span><span class="token punctuation">)</span>  <span class="token comment">//   自动导入选择器</span>
+		<span class="token class-name">AutoConfigurationImportSelector</span>：自动导入选择器
+			<span class="token function">getAutoConfigurationEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span>获得自动配置的实体
+			<span class="token function">getCandidateConfigurations</span><span class="token punctuation">(</span><span class="token punctuation">)</span>获取候选的配置
+				<span class="token keyword">protected</span> <span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">&gt;</span></span> <span class="token function">getSpringFactoriesLoaderFactoryClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> <span class="token class-name">EnableAutoConfiguration</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">;</span>
+				<span class="token punctuation">}</span>标注了<span class="token class-name">EnableAutoConfiguration</span>注解的类
+				
+				<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> <span class="token function">loadFactoryNames</span><span class="token punctuation">(</span><span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">&gt;</span></span> factoryType<span class="token punctuation">,</span> <span class="token annotation punctuation">@Nullable</span> <span class="token class-name">ClassLoader</span> classLoader<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token class-name">ClassLoader</span> classLoaderToUse <span class="token operator">=</span> classLoader<span class="token punctuation">;</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span>classLoader <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				classLoaderToUse <span class="token operator">=</span> <span class="token class-name">SpringFactoriesLoader</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token punctuation">}</span>
+				<span class="token class-name">String</span> factoryTypeName <span class="token operator">=</span> factoryType<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token class-name">List</span><span class="token punctuation">)</span><span class="token function">loadSpringFactories</span><span class="token punctuation">(</span>classLoaderToUse<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>factoryTypeName<span class="token punctuation">,</span> <span class="token class-name">Collections</span><span class="token punctuation">.</span><span class="token function">emptyList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token punctuation">}</span>获取所有的加载配置
+
+				loadSpringFactories
+					classLoader<span class="token punctuation">.</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token string">"META-INF/spring.factories"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>获取资源
+						spring<span class="token operator">-</span>boot<span class="token operator">-</span>autoconfigure<span class="token operator">-</span><span class="token number">2.2</span><span class="token number">.0</span><span class="token punctuation">.</span>RELEASE<span class="token punctuation">.</span>jar
+							META<span class="token operator">-</span>INF
+								spring<span class="token punctuation">.</span>factories：所有的自动配置都在这里
+								这么多自动配置类为什么有的没有生效，需要导入对应的start才能生效
+								核心注解：<span class="token annotation punctuation">@ConditionalOnXXX</span>如果里面的条件都满足，才会生效<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>springboot所有的自动配置都是在启动的时候启动并加载：所有的自动配置都在spring.factories，所有的自动配置类都在文件中，但是不一定生效，要满足条件才能加载，只要导入了对应的start，就有对应的启动器了，有了启动器，我们的自动装配就会生效，然后就自动配置完成了</p>
 
                 
@@ -504,7 +599,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://xihuanlei.github.io/2021/02/08/SpringBoot%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86/">https://xihuanlei.github.io/2021/02/08/SpringBoot%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86/</a>
+                    <a href="https://supernan-nan.github.io/2021/02/08/SpringBoot%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86/">https://supernan-nan.github.io/2021/02/08/SpringBoot%E8%87%AA%E5%8A%A8%E8%A3%85%E9%85%8D%E5%8E%9F%E7%90%86/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -975,13 +1070,13 @@
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
     
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2021</span>
+                <span id="year">2020-2021</span>
             
-            <span id="year">2019</span>
+            <span id="year">2020</span>
             <a href="/about" target="_blank">supernan</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1005,17 +1100,61 @@
             
             <br>
             
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "12";
+                    var startDate = "12";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
             <br>
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/superNan-nan" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <a href="mailto:2570277785@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
         <i class="fas fa-envelope-open"></i>
     </a>
 
@@ -1025,7 +1164,7 @@
 
 
 
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2570277785" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2570277785" data-position="top" data-delay="50">
         <i class="fab fa-qq"></i>
     </a>
 
@@ -1205,6 +1344,13 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+
+    <!-- 樱花特效本地引入 -->
+    <script src="./sakura.js"></script>
+
+    <!--樱花特效在线引入
+    <script src="https://files.cnblogs.com/files/quaint/sakuraPlus.js"></script>-->
+            
 </body>
 
 </html>

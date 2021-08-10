@@ -241,9 +241,17 @@ mark {
 }
 
 .bg-color {
-    background-image: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%);
+    background-image: linear-gradient(to right, #bf305b 0%, #9d0f7a 100%);
 }
 
+@-webkit-keyframes rainbow {
+    /* 动态切换背景颜色. */
+ }
+ 
+ @keyframes rainbow {
+     /* 动态切换背景颜色. */
+ }
+ 
 .text-color {
     color: #0f9d58 !important;
 }
@@ -1845,6 +1853,22 @@ footer a {
 footer .copy-right {
     color: #dbdbdb;
 }
+
+/* 滚动条 */
+::-webkit-scrollbar-thumb {
+    background-color: #0ee1b3;
+    background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.4) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.4) 50%,rgba(255,255,255,.4) 75%,transparent 75%,transparent);
+    border-radius: 3em;
+}
+::-webkit-scrollbar-track {
+    background-color: rgb(218, 202, 255);
+    border-radius: 3em;
+}
+::-webkit-scrollbar {
+    width: 8px;
+    height: 15px;
+}
+
 
 /*搜索层样式*/
 #searchIcon {
