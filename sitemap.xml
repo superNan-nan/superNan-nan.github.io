@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://supernan-nan.github.io/musics/index.html</loc>
+    
+    <lastmod>2021-08-11</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://supernan-nan.github.io/2021/01/24/springsecurity-li-jie/</loc>
     
     <lastmod>2021-08-10</lastmod>
@@ -200,14 +207,14 @@
   </url>
   
   <url>
-    <loc>https://supernan-nan.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://supernan-nan.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2021-08-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://supernan-nan.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>https://supernan-nan.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2021-08-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
